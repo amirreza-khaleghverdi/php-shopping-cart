@@ -1,23 +1,22 @@
-### for each model you should have a specific class, the table name in database should be jam
+# PHP Shopping Cart
 
-### function and variable names should be camel case 
+A simple PHP online shop implementing the **MVC pattern** with **Dependency Injection**.  
+Features include user authentication, product catalog, and shopping cart functionality.
 
-### method server ro jaye login contoller to hamon router check kon (post va in dastana) va error 405 ina estefade kon ????????
+---
 
-# az solid estefade kon
+## Features
 
-### dependency injection ro ham be khon
+- User registration and login  
+- Product listing and details page  
+- Shopping cart with add/remove/update functionality  
+- Order summary (without real payment integration)  
+- MVC architecture with Dependency Injection  
 
-# az validation estefade kon 
+---
 
-# magic function haye php ro ham negah con
+## Installation
 
-# baraye jalase baad ham product ro bezan
-
-# CSRF protection 
-
-
-checkout moshkel dare
-
-
-solid magic functions DI validation 
+1. Clone the repository:  
+```bash
+git clone https://github.com/your-username/php-shopping-cart.git
