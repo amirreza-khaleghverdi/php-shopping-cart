@@ -27,6 +27,25 @@ class OrderItems
             return false;
         }
     }
+
+    public function getOrderItemsByOrderId($order_id)
+    {
+        try {
+
+            $sql = "SELECT oi.product_id, oi.quantity, oi.price, p.name
+            FROM order_items oi
+            JOIN products p ON oi.product_id = p.id
+            WHERE oi.order_id =:order_id";
+
+            $stmt=$this->conn->prepare($sql);
+            $stmt->bindValue(':order_id' , $order_id);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }
 
 ?>

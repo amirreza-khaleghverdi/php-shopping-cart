@@ -54,7 +54,7 @@
                     <button type="submit" class="checkout-btn">Confirm Order</button>
                 </form>
 
-                <a href="index.php?action=cart" class="remove-btn">Cancel</a>
+                <a href="index.php?action=cancel_order" class="remove-btn">Cancel</a>
             <?php else: ?>
                 <p>No order found.</p>
             <?php endif; ?>

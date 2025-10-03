@@ -22,20 +22,23 @@ class checkout
     {
         $cart_items=$this->cart->getCartItemsByUser($_SESSION['user_id']);
 
-        $total =0;
-        foreach($cart_items as $item)
-        {
-            $total+=$item['price'];
+        $total = 0;
+        foreach($cart_items as $item) {
+            $total += $item['price'] * $item['quantity'];
         }
-
+        
         $order_id = $this->orders->makeOrder($_SESSION['user_id'] , $total , 'pending');
 
         foreach($cart_items as $item)
         {
             $this->order_items->addOrderItem($order_id , $item['product_id'] , $item['quantity'] , $item['price']);
         }
+        
 
-        header("Location: index.php?action=order_confirmation&order_id=$order_id");
+        $order=$this->orders->getOrderById($order_id);
+        $order_items=$this->order_items->getOrderItemsByOrderId($order_id);
+
+        include 'View/Confirmationpage.php';
 
     }
 

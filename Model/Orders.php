@@ -27,6 +27,22 @@ class Orders
             return false;
         }
     }
+
+    public function getOrderById($order_id)
+    {
+        try{
+
+            $sql = "SELECT id, total, status FROM orders WHERE id = :order_id";
+            $stmt=$this->conn->prepare($sql);
+            $stmt->bindValue(':order_id' , $order_id);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        }
+        catch (Exception $e){
+            return false;
+        }
+    }
 }
 
 

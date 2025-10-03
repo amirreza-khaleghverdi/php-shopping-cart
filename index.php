@@ -95,10 +95,9 @@ switch ($action)
         }
         break;
     
-    case 'showCheckout':
-        if(isset($_GET['user_id'])) {
-
-        }
+    case 'show_confirmation':
+        $checkoutController->Checkout();
+        break;
 
     default:
         echo "404 Page Not Found";

@@ -15,7 +15,7 @@ class Cart
     {
         try
         {
-            $sql = "SELECT c.id, c.quantity, p.name, p.price, (p.price * c.quantity) AS total
+            $sql = "SELECT c.id, c.quantity, c.product_id, p.name, p.price, (p.price * c.quantity) AS total
             FROM cart_items c
             JOIN products p ON c.product_id = p.id
             WHERE c.user_id = :user_id";
