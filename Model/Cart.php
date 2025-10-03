@@ -30,7 +30,7 @@ class Cart
         }
     }
 
-    public function getCartItemsByID($rowId)
+    public function getCartItemsByRowID($rowId)
     {
         try
         {

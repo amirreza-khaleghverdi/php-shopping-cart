@@ -40,7 +40,7 @@ class Cartpage
 
         foreach($quantities as $id => $quantity)
         {
-            $cartItem = $this->cart->getCartItemsByID($id);
+            $cartItem = $this->cart->getCartItemsByRowID($id);
             $productData=$this->product->get_product_stock($cartItem['product_id']);
             $stock=$productData['stock'];
             $name=$productData['name'];

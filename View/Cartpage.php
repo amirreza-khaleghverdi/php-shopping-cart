@@ -68,7 +68,7 @@
                     </div>
                     <button type="submit">Update Cart</button>
                 </form>
-                <a href="index.php?action=checkout&user_id=<?= $_SESSION['user_id']; ?>" class="checkout-btn">Proceed to Checkout</a>
+                <a href="index.php?action=showCheckout" class="checkout-btn">Proceed to Checkout</a>
             <?php else: ?>
                 <p>Your cart is empty.</p>
             <?php endif; ?>
