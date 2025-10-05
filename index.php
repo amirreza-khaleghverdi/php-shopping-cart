@@ -9,6 +9,7 @@ require_once 'Model/Product.php';
 require_once 'Model/Cart.php';
 require_once 'Model/OrderItems.php';
 require_once 'Model/Orders.php';
+
 require_once 'Controller/LoginController/Login.php';
 require_once 'Controller/LoginController/Register.php';
 require_once 'Controller/HomeController/Homepage.php';
@@ -96,7 +97,24 @@ switch ($action)
         break;
     
     case 'show_confirmation':
-        $checkoutController->Checkout();
+        if (isset($_SESSION['user_id'])) {
+            $checkoutController->Checkout();
+        } else {
+            header("Location: index.php?action=login");
+            exit;
+        }
+        break;
+    
+    case 'confirm_order':
+        if($method == 'POST' && isset($_POST['order_id'])){
+            $checkoutController->confirmOrder($_POST['order_id']);
+        }
+        break;
+
+    case 'cancel_order':
+        if($method == 'POST' && isset($_POST['order_id'])){
+            $checkoutController->cancelOrder($_POST['order_id']);
+        }
         break;
 
     default:

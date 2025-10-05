@@ -42,6 +42,34 @@ class checkout
 
     }
 
+    public function confirmOrder($order_id)
+    {
+
+        if($this->orders->confirmOrder($order_id)) 
+        {
+            $_SESSION['message'] = "✅ Thank you for your purchase!";
+            header("Location: index.php?action=homepage");
+            exit;
+        } else {
+            $_SESSION['error'] = $_SESSION['error'] ?? "❌ Could not complete your order.";
+            header("Location: index.php?action=homepage");
+            exit;
+        }
+    }
+
+    public function cancelOrder($order_id)
+    {
+        if($this->orders->cancelOrder($order_id)){
+            $_SESSION['message'] = "order cancelled";
+            header("Location: index.php?action=homepage");
+            exit;
+        } else {
+            $_SESSION['error'] = "something goes wrong";
+            header("Location: index.php?action=homepage");
+            exit;
+        }
+    }
+
 }
 
 ?>
