@@ -44,7 +44,7 @@ class Login
 
             $sql="SELECT * FROM users WHERE id = :id LIMIT 1";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindValue(':id' , $id);
+            $stmt->bindValue(':id' , $id, PDO::PARAM_INT);
             $stmt->execute();
             $user=$stmt->fetch(PDO::FETCH_ASSOC);
             return $user;
@@ -55,7 +55,24 @@ class Login
         }
     }
 
-    
+    public function change_password($user_id, $password)
+    {
+        try{
+
+            $hash=password_hash($password,PASSWORD_DEFAULT);
+            $sql = "UPDATE users SET password =:password WHERE id =:user_id ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+            $stmt->bindValue(':password' ,$hash);
+            $stmt->execute();
+            return $stmt;
+
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+    }
 
 }
 

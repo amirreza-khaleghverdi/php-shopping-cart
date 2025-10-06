@@ -128,7 +128,42 @@ class Orders
             return false;
         }
     }
-    
+
+    public function getLatestOrdersByUserId($user_id)
+    {
+        try {
+            $sql = "SELECT id, total, status, created_at
+                    FROM orders
+                    WHERE user_id = :id
+                    ORDER BY created_at DESC
+                    LIMIT 5";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(':id', $user_id, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function getOrderStatsByUserId($user_id)
+    {
+        try {
+            $sql = "SELECT 
+                        SUM(status = 'pending') AS pending,
+                        SUM(status = 'completed') AS completed,
+                        SUM(status = 'cancelled') AS cancelled,
+                        COUNT(*) AS total_orders
+                    FROM orders
+                    WHERE user_id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(':id', $user_id, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 }
 
 

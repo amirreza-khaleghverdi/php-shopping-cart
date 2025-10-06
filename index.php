@@ -16,6 +16,7 @@ require_once 'Controller/HomeController/Homepage.php';
 require_once 'Controller/CartController/Cartpage.php';
 require_once 'Controller/ViewController/Viewpage.php';
 require_once 'Controller/CheckoutController/Checkout.php';
+require_once 'Controller/DashboardController/Dashboard.php';
 
 
 
@@ -32,6 +33,7 @@ $homepageController = new Homepage($Product);
 $cartpageController = new Cartpage($Cart , $Product);
 $viewpageController = new Viewpage($Product);
 $checkoutController = new checkout($Orders , $OrderItems , $Cart);
+$dashboardController = new Dashboard($Orders, $OrderItems, $Login);
 
 
 
@@ -114,6 +116,16 @@ switch ($action)
     case 'cancel_order':
         if($method == 'POST' && isset($_POST['order_id'])){
             $checkoutController->cancelOrder($_POST['order_id']);
+        }
+        break;
+
+    case 'dashboard':
+            $dashboardController->showDashboard();
+        break;
+
+    case 'change_password':
+        if($method == 'POST'){
+            $dashboardController->changePassword($_POST['password']);
         }
         break;
 
