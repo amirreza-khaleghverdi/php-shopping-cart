@@ -13,6 +13,7 @@
         </div>
         <nav>
             <a href="index.php?action=homepage">Home</a>
+            <a href="index.php?action=dashboard">Dashboard</a>
             <a href="index.php?action=logout">Logout</a>
         </nav>
     </header>

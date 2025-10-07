@@ -17,6 +17,7 @@ require_once 'Controller/CartController/Cartpage.php';
 require_once 'Controller/ViewController/Viewpage.php';
 require_once 'Controller/CheckoutController/Checkout.php';
 require_once 'Controller/DashboardController/Dashboard.php';
+require_once 'Controller/ViewOrderDetails/ViewOrdersDetails.php';
 
 
 
@@ -34,6 +35,8 @@ $cartpageController = new Cartpage($Cart , $Product);
 $viewpageController = new Viewpage($Product);
 $checkoutController = new checkout($Orders , $OrderItems , $Cart);
 $dashboardController = new Dashboard($Orders, $OrderItems, $Login);
+$vieworderdetails = new ViewOrdersDetails($OrderItems , $Orders);
+
 
 
 
@@ -127,6 +130,10 @@ switch ($action)
         if($method == 'POST'){
             $dashboardController->changePassword($_POST['password']);
         }
+        break;
+
+    case 'view_order_details':
+            $vieworderdetails->ViewOrderItems($_GET['order_id']);
         break;
 
     default:

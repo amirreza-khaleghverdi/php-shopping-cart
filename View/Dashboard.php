@@ -13,7 +13,7 @@
         </div>
         <nav>
             <a href="index.php?action=homepage">Home</a>
-            <a href="index.php?action=cart">Cart</a>
+            <a href="index.php?action=cart">🛒 Cart</a>
             <a href="index.php?action=logout">Logout</a>
             <button id="darkModeToggle">🌙</button>
         </nav>
@@ -54,7 +54,7 @@
 
             <!-- Orders Table -->
             <section>
-                <h3>5 Last Orders</h3>
+                <h3>Lastest Orders</h3>
                 <table class="orders-table">
                     <thead>
                         <tr>
@@ -62,6 +62,7 @@
                             <th>Total</th>
                             <th>Status</th>
                             <th>Date</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,6 +73,9 @@
                                     <td>$<?= htmlspecialchars($order['total']) ?></td>
                                     <td><?= htmlspecialchars($order['status']) ?></td>
                                     <td><?= htmlspecialchars($order['created_at']) ?></td>
+                                    <td>
+                                        <a href="index.php?action=view_order_details&order_id=<?= $order['id']; ?>" class="view-btn">View</a>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>

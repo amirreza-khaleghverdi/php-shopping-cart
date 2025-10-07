@@ -32,7 +32,7 @@ class Orders
     {
         try{
 
-            $sql = "SELECT id, total, status FROM orders WHERE id = :order_id";
+            $sql = "SELECT id, total, status, created_at FROM orders WHERE id = :order_id";
             $stmt=$this->conn->prepare($sql);
             $stmt->bindValue(':order_id' , $order_id ,PDO::PARAM_INT);
             $stmt->execute();
@@ -135,8 +135,7 @@ class Orders
             $sql = "SELECT id, total, status, created_at
                     FROM orders
                     WHERE user_id = :id
-                    ORDER BY created_at DESC
-                    LIMIT 5";
+                    ORDER BY created_at DESC";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindValue(':id', $user_id, PDO::PARAM_INT);
             $stmt->execute();
