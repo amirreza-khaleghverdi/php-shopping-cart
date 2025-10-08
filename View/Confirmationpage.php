@@ -66,7 +66,7 @@
     </main>
 
     <footer>
-        <p>&copy; <?= date('Y'); ?> My Shop</p>
+        <p>&copy; <?= date('Y'); ?> Some rights reserved (almost none tbh).</p>
     </footer>
 </body>
 </html>
