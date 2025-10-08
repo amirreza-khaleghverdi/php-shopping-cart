@@ -35,3 +35,11 @@ This project allows users to browse products, manage their carts, place orders, 
 
 ## 🧩 Project Architecture (MVC)
 
+
+## Database Setup
+1. Create a database named `cart_items`
+2. Create a database named `order_items`
+3. Create a database named `orders`
+4. Create a database named `users`
+5. Create a database named `products`
+
