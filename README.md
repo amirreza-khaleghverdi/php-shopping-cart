@@ -1,22 +1,37 @@
-# PHP Shopping Cart
+# 🛍️ My Online Shop
 
-A simple PHP online shop implementing the **MVC pattern** with **Dependency Injection**.  
-Features include user authentication, product catalog, and shopping cart functionality.
-
----
-
-## Features
-
-- User registration and login  
-- Product listing and details page  
-- Shopping cart with add/remove/update functionality  
-- Order summary (without real payment integration)  
-- MVC architecture with Dependency Injection  
+A simple yet complete **PHP Online Shopping System** built with the **MVC pattern**, **Dependency Injection**, and a custom **Router**.  
+This project allows users to browse products, manage their carts, place orders, and view their order history through a clean, modular structure.
 
 ---
 
-## Installation
+## 🚀 Features
 
-1. Clone the repository:  
-```bash
-git clone https://github.com/your-username/php-shopping-cart.git
+### 🏠 Homepage
+- Displays all available products.
+- Each product includes:
+  - **Add to Cart** button.
+  - **View Details** button (shows full product information).
+
+### 🛒 Shopping Cart
+- Add, remove, and update item quantities.
+- Automatically updates total price.
+- Simple checkout process to place an order.
+
+### 📦 Orders Dashboard
+- Shows **all orders** for the logged-in user.
+- Displays order details such as:
+  - Order ID
+  - Total amount
+  - Status (pending, completed, or cancelled)
+  - Date of creation
+
+### 👤 Authentication
+- **Register**, **Login**, and **Logout** system.
+- Password validation and error handling.
+- Session-based authentication.
+
+---
+
+## 🧩 Project Architecture (MVC)
+
