@@ -45,7 +45,11 @@
 
                                 <h3><?php echo htmlspecialchars($product['name']); ?></h3>
                                 <p><strong>$<?php echo number_format($product['price'], 2); ?></strong></p>
-                                <p><strong><?php echo number_format($product['stock']); ?> left in stock </strong></p>
+                                <?php if ($product['stock']==0): ?>
+                                    <p><strong>out of stock right now</strong></p>
+                                <?php else: ?>
+                                    <p><strong><?php echo number_format($product['stock']); ?> left in stock </strong></p>
+                                <?php endif; ?>
 
                                 <form action="index.php?action=add_to_cart" method="post" style="display:inline;">
                                     <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">

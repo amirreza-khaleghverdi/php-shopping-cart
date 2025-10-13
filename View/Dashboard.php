@@ -115,7 +115,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>© <?= date('Y') ?> Some rights reserved (almost none tbh).</p>
+        <p>© <?= date('Y') ?> My Online Shop. All rights reserved.</p>
     </footer>
 
     <!-- Dark Mode Script -->

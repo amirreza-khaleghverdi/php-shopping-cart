@@ -9,6 +9,7 @@ require_once 'Model/Product.php';
 require_once 'Model/Cart.php';
 require_once 'Model/OrderItems.php';
 require_once 'Model/Orders.php';
+require_once 'Model/AdminLogin.php';
 
 require_once 'Controller/LoginController/Login.php';
 require_once 'Controller/LoginController/Register.php';
@@ -18,6 +19,7 @@ require_once 'Controller/ViewController/Viewpage.php';
 require_once 'Controller/CheckoutController/Checkout.php';
 require_once 'Controller/DashboardController/Dashboard.php';
 require_once 'Controller/ViewOrderDetails/ViewOrdersDetails.php';
+require_once 'Controller/AdminController/Admin.php';
 
 
 
@@ -27,6 +29,7 @@ $Product = new Product($dataBase);
 $Cart = new Cart($dataBase);
 $Orders = new Orders($dataBase);
 $OrderItems = new OrderItems($dataBase);
+$Admin = new AdminLogin($dataBase);
 
 $loginController = new LoginController($Login);
 $registerController = new RegisterController($Login);
@@ -36,6 +39,7 @@ $viewpageController = new Viewpage($Product);
 $checkoutController = new checkout($Orders , $OrderItems , $Cart);
 $dashboardController = new Dashboard($Orders, $OrderItems, $Login);
 $vieworderdetails = new ViewOrdersDetails($OrderItems , $Orders);
+$adminController = new AdminController($Admin, $Login);
 
 
 
@@ -135,6 +139,17 @@ switch ($action)
     case 'view_order_details':
             $vieworderdetails->ViewOrderItems($_GET['order_id']);
         break;
+
+    case 'admin':
+        $adminController->showAdminPage();
+        break;
+    
+    case 'admin_login':
+        if ($method == 'POST') {
+            $adminController->checkLogin();
+        }
+        break;
+
 
     default:
         echo "404 Page Not Found";
