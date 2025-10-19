@@ -23,7 +23,7 @@
                 <fieldset>
                     <legend class="legend">login:</legend>
                     <label for="username">Username:</label><br>
-                    <input type="text" id="username" name="username" placeholder="enter username" required><br>
+                    <input type="text" id="username" name="admin_name" placeholder="enter username" required><br>
                     <label for="password">password:</label><br>
                     <input type="password" id="password" name="password"  placeholder="enter password" required><br><br>
                     <input type="submit" value="login">

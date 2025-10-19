@@ -28,21 +28,7 @@ class Orders
         }
     }
 
-    public function getOrderById($order_id)
-    {
-        try{
 
-            $sql = "SELECT id, total, status, created_at FROM orders WHERE id = :order_id";
-            $stmt=$this->conn->prepare($sql);
-            $stmt->bindValue(':order_id' , $order_id ,PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-
-        }
-        catch (Exception $e){
-            return false;
-        }
-    }
 
     public function confirmOrder($order_id)
     {
@@ -163,7 +149,35 @@ class Orders
             return false;
         }
     }
-}
 
+    public function getOrderById($order_id)
+    {
+        try{
+
+            $sql = "SELECT id, total, status, created_at FROM orders WHERE id = :order_id";
+            $stmt=$this->conn->prepare($sql);
+            $stmt->bindValue(':order_id' , $order_id ,PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        }
+        catch (Exception $e){
+            return false;
+        }
+    }
+
+    public function getAllOrders()
+    {
+        try{
+            $sql = "SELECT * FROM orders";
+            $stmt=$this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } 
+        catch (Exception $e) {
+            return false;
+        }
+    }
+}
 
 ?>

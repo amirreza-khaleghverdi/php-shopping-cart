@@ -74,6 +74,15 @@ class Login
         }
     }
 
+    public function get_all_users()
+    {
+        $sql = "SELECT * FROM users";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
 
 

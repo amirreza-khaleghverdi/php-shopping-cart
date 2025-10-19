@@ -31,6 +31,7 @@ $Orders = new Orders($dataBase);
 $OrderItems = new OrderItems($dataBase);
 $Admin = new AdminLogin($dataBase);
 
+
 $loginController = new LoginController($Login);
 $registerController = new RegisterController($Login);
 $homepageController = new Homepage($Product);
@@ -39,7 +40,7 @@ $viewpageController = new Viewpage($Product);
 $checkoutController = new checkout($Orders , $OrderItems , $Cart);
 $dashboardController = new Dashboard($Orders, $OrderItems, $Login);
 $vieworderdetails = new ViewOrdersDetails($OrderItems , $Orders);
-$adminController = new AdminController($Admin, $Login);
+$adminController = new AdminController($Admin, $Orders, $Product, $Login);
 
 
 
@@ -141,14 +142,28 @@ switch ($action)
         break;
 
     case 'admin':
-        $adminController->showAdminPage();
+            $adminController->showAdminPage();
         break;
     
-    case 'admin_login':
-        if ($method == 'POST') {
+    case 'showAdminLogin':
+            $adminController->showLoginPage();
+        break;
+    
+    case 'doAdminLogin':
+        if ($method == 'POST')
+        {
             $adminController->checkLogin();
         }
         break;
+
+
+
+
+
+    // case 'hi':
+    //     $adminController->register();
+    //     break;
+
 
 
     default:
